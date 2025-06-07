@@ -1,0 +1,37 @@
+public class ContaBancaria {
+    private String nomeTitular;
+    private String numeroConta;
+    private double saldo;
+
+    public ContaBancaria(String nomeTitular, String numeroConta, double saldoInicial) {
+        this.nomeTitular = nomeTitular;
+        this.numeroConta = numeroConta;
+        this.saldo = saldoInicial;
+    }
+
+    public void depositar(double valor) {
+        if (valor > 0) {
+            saldo += valor;
+            System.out.printf("Depósito de R$ %.2f realizado com sucesso.%n", valor);
+        } else {
+            System.out.println("Valor de depósito inválido.");
+        }
+    }
+
+    public void sacar(double valor) {
+        if (valor > 5000) {
+            System.out.println("Valor do saque acima do permitido.");
+        } else if (valor > saldo) {
+            System.out.println("Saldo insuficiente para realizar a operação.");
+        } else if (valor > 0) {
+            saldo -= valor;
+            System.out.printf("Saque de R$ %.2f realizado com sucesso.%n", valor);
+        } else {
+            System.out.println("Valor de saque inválido.");
+        }
+    }
+
+    public void exibirSaldo() {
+        System.out.printf("Saldo atual: R$ %.2f%n", saldo);
+    }
+}
